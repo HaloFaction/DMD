@@ -861,9 +861,10 @@
 				}
 			},
 			refresh(){
-				
+				if(this.detail == false){
 				this.getGift()
 				this.getUser()
+				}
 			},
 			getTime:function(){
 			
