@@ -1,0 +1,13 @@
+
+.c-table{
+	display: -webkit-box;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20rpx;
+}
+.c-td{
+	
+	text-align: center;
+	width: 30%;
+}
+
