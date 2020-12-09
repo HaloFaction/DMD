@@ -36,12 +36,13 @@
 				</view>
 				<button class="cu-btn bg-blue lg margin-tb-sm" @click="addUser()">新建角色</button>
 			</view>
-			<view class="cuIcon-refresh" @click="refresh()" style="font-size: 20px;cursor: pointer;width: 160upx;">刷新</view>
+			
 			<view style="text-align: center;">
 				
 			<button v-if="!this.showList1" class="cu-btn bg-blue round sm" @click="showListAgain(1)">余晖</button><button v-if="!this.showList2" class="cu-btn bg-blue round sm" @click="showListAgain(2)">宓桃</button><button v-if="!this.showList3" class="cu-btn bg-blue round sm" @click="showListAgain(3)">武雪散</button>
 			<button v-if="!this.showList4" class="cu-btn bg-blue round sm" @click="showListAgain(4)">猿飞</button><button v-if="!this.showList5" class="cu-btn bg-blue round sm" @click="showListAgain(5)">哑头陀</button><button v-if="!this.showList6" class="cu-btn bg-blue round sm" @click="showListAgain(6)">岳琳</button>
 			</view>
+			<view style="display: flex;justify-content: space-around;"><view class="cuIcon-refresh" @click="refresh()" style="font-size: 20px;cursor: pointer;">刷新</view></view>
 			<!-- #ifdef H5 -->
 			<view style="display: flex;justify-content: space-around;overflow: auto;width: 100%;padding">	
 				<view class="gilist margin-tb-sm" v-if="showList1">
@@ -581,7 +582,7 @@
 			},
 			 getGift(){
 				
-				this.$refs.priceshow.close()
+				// this.$refs.priceshow.close()
 				this.currentPriceQ = ''
 				this.currentPriceW = ''
 				this.giftList[0].gift=[]
@@ -860,6 +861,7 @@
 				}
 			},
 			refresh(){
+				
 				this.getGift()
 				this.getUser()
 			},
@@ -937,6 +939,9 @@
 					this.showList6 = true
 				}
 			}
+		},
+		onShow() {
+			setInterval(this.refresh(),60000)
 		}
     }
 </script>

@@ -10,7 +10,8 @@
 				<view class="c-td">{{item.time | formatDate}}</view>
 				<view class="c-td">
 					<button class="cu-btn round lg bg-green" @click="addVictory(item.number)">管理</button>
-					<button class="cu-btn lg round bg-red" style="margin-left: 40upx;" @click="shutdown(item._id)">结束</button>
+					<button class="cu-btn lg round bg-yellow" style="margin-left: 40upx;" @click="shutdown(item._id)">结束</button>
+					<button class="cu-btn lg round bg-red" @click="deleteBoss(item._id)">删除</button>
 				</view>
 			</view>
 		</view>
@@ -139,6 +140,24 @@
 					this.order = '历史记录'
 					this.getOrder()
 				}
+			},
+			deleteBoss:function(e){
+				var _this = this
+				uni.showModal({
+					title:'提示',
+					content:'是否确认删除',
+					success:function(res){							
+						if(res.confirm){
+							uni.showLoading({
+								
+							})
+							const db = uniCloud.database()
+							db.collection("boss").where({_id:e}).remove()
+							uni.hideLoading()
+							
+						}
+					}
+				})
 			}
 		},
 		onLoad() {

@@ -1,7 +1,9 @@
 <template>
 	<view style="display:flex;flex-direction:row;justify-content: space-around;">
 		<view v-if="giftshow">
-			
+				<view style="display: flex;flex-direction: row;">装备名称<input type="text" style="border: 1px solid red;width: 200px;"  v-model="giftname"/>
+					<button class="cu-btn sm bg-blue" @click="search()">搜索</button>
+					</view>
 				<table>
 					<tr>
 						<th>装备名称</th>
@@ -103,7 +105,8 @@
 				giftshow:false,
 				addgiftlist:[],
 				boss:'',
-				ph:''
+				ph:'',
+				giftname:''
 				
 			}
 		},
@@ -308,6 +311,15 @@
 			},
 			shutup:function(){
 				this.$refs.pricehist.close()
+			},
+			search:function(){
+				const db=uniCloud.database()
+				db.collection('giftType').where({
+					name:new RegExp(this.giftname+'?')
+				}).get().then((res) => {				
+					this.giftType=res.result.data
+					
+				})
 			}
 		},
 		onLoad(e){
