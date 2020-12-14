@@ -46,6 +46,12 @@
 			"style":{
 				"navigationBarTitleText":"用户角色审核"
 			}
+		},
+		{
+			"path":"pages/index/groupInfo",
+			"style":{
+				"navigationBarTitleText":"副本详情"
+			}
 		}
 	],
 	"subPackages": [{
